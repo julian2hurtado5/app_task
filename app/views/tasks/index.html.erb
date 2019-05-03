@@ -1,0 +1,40 @@
+<h1>Welcome to todo app</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6" id="to_do">
+      <h3>To do</h3>
+      <% @to_do.each do |task|%>
+        <div class="row" id= <%=task.id%>>
+          <div class="col-3"><%= task.id%></div>
+          <div class="col-3"> <p><%= task.description%> <p></div>
+          <div class="col-3"> <a  class="ajax" href= <%= task_path(task)%> > <%= fa_icon  task.done ? "window-close" : "check-circle"%> </a></div>
+          <div class="col-3">
+            <%= link_to task_path(task),:action => :update, :method => :put, :remote => true do%>
+              <%= fa_icon  "adjust"%>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-6" id="done">
+      <h3>Done</h3>
+      <% @done.each do |task|%>
+      <div class="row" id= <%=task.id%>>
+        <div class="col-3"><%= task.id%></div>
+        <div class="col-3"> <p><%= task.description%> <p></div>
+        <div class="col-3"> <a  class="ajax" href= <%= task_path(task)%> > <%= fa_icon  task.done ? "window-close" : "check-circle"%> </a></div>
+        <div class="col-3">
+          <%= link_to task_path(task),:action => :update, :method => :put, :remote => true do%>
+            <%= fa_icon  "adjust"%>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+<script>
+    tasksIndex()
+</script>

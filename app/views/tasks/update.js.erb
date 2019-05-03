@@ -1,0 +1,6 @@
+$("#<%=@task.id%>").remove()
+<%if @task.done%>
+  $("done").append('<%= render partial: "task" %>')
+<%else %>
+  $("to_do").append('<%= render partial: "task" %>')
+<%end%>
